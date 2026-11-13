@@ -1,0 +1,186 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+/* Navbar */
+
+.navbar {
+    background-color: #ffffff !important;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0d6efd !important;
+}
+
+.nav-link {
+    color: #333333 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #0d6efd !important;
+}
+
+/* Buttons */
+
+.btn {
+    border-radius: 8px;
+    padding: 9px 18px;
+}
+
+/* Hero Section */
+
+.hero-section {
+    background: linear-gradient(135deg, #eaf3ff, #ffffff);
+    padding: 80px 0;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+.hero-text {
+    font-size: 1.1rem;
+    color: #6c757d;
+    line-height: 1.7;
+}
+
+/* Section */
+
+.section-title {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: #6c757d;
+    margin-bottom: 35px;
+}
+
+/* Category */
+
+.category-card {
+    border: none;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Product */
+
+.product-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.2s;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    height: 200px;
+    background-color: #eaf3ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+.product-card .card-body {
+    padding: 20px;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0d6efd;
+}
+
+/* Forms */
+
+.form-card {
+    max-width: 500px;
+    margin: 50px auto;
+    border: none;
+    border-radius: 14px;
+}
+
+.form-card .card-body {
+    padding: 35px;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 11px 13px;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* Dashboard */
+
+.dashboard-header {
+    background-color: #ffffff;
+    padding: 35px 0;
+}
+
+.search-box {
+    max-width: 500px;
+}
+
+/* Profile */
+
+.profile-card {
+    border: none;
+    border-radius: 14px;
+}
+
+/* Cart */
+
+.cart-card {
+    border: none;
+    border-radius: 12px;
+}
+
+.cart-summary {
+    border: none;
+    border-radius: 12px;
+}
+
+/* Footer */
+
+footer {
+    background-color: #ffffff;
+    border-top: 1px solid #dee2e6;
+    margin-top: 50px;
+}
+
+footer p {
+    color: #6c757d;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 50px 0;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+}
