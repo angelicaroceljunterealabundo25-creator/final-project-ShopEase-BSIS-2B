@@ -1,0 +1,61 @@
+﻿/* GENERAL STYLING */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #222222;
+}
+
+/* BRAND */
+.navbar-brand {
+    color: #173b67 !important;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+/* NAVIGATION */
+.nav-link {
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.nav-link:hover {
+    color: #2563a6 !important;
+}
+
+/* BUTTONS */
+.btn-primary {
+    background-color: #173b67;
+    border-color: #173b67;
+}
+
+.btn-primary:hover {
+    background-color: #102b4d;
+    border-color: #102b4d;
+}
+
+/* HERO SECTION */
+.bg-light {
+    background-color: #eef4fa !important;
+}
+
+/* PRODUCT AND CATEGORY CARDS */
+.card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* SECTION HEADINGS */
+h2 {
+    color: #173b67;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 30px;
+}
