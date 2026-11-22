@@ -1,22 +1,23 @@
+
 // Load environment variables
 require('dotenv').config();
 
-// Import packages
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 // Import database connection
 const connectDB = require('./config/db');
 
 // Import routes
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/product');
 const orderRoutes = require('./routes/orders');
 
 // Initialize Express
 const app = express();
 
-// Connect to MongoDB
 connectDB();
 
 // Middleware
@@ -25,17 +26,23 @@ app.use(express.json());
 
 // API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 
-// Home route
+// Serve public frontend files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Homepage
 app.get('/', (req, res) => {
-    res.send('Server is running ...');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+
