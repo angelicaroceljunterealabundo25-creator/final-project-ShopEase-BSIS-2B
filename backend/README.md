@@ -71,3 +71,30 @@ The server runs on the port configured in the `.env` file.
 
 ## API Testing
 API endpoints were tested using Thunder Client, including GET, POST, PUT, and DELETE operations for users, products, and orders.
+
+## Mongoose Models
+
+The backend uses three Mongoose models:
+
+### User Model (`User.js`)
+- name - User's name
+- email - User's email address (unique and stored in lowercase)
+- password - User's hashed password
+- role - User's account role (defaults to customer)
+
+### Product Model (`Product.js`)
+- name - Product name
+- description - Product description
+- price - Product price
+- category - Product category
+- stock - Available product quantity
+
+### Order Model (`Order.js`)
+- user - Reference to the User who placed the order
+- products - List of ordered products and their quantities
+- totalAmount - Total order amount
+- deliveryAddress - Order delivery address
+- paymentMethod - Selected payment method
+- status - Order status (defaults to Processing)
+
+All three models use timestamps to record creation and update dates.
