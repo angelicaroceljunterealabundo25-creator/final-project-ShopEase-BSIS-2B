@@ -1,4 +1,3 @@
-
 // Load environment variables
 require('dotenv').config();
 
@@ -30,19 +29,27 @@ app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 
-// Serve public frontend files
-app.use(express.static(path.join(__dirname, 'public')));
+// Health check (used by Render)
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok' });
+});
 
-// Homepage
+// Serve the frontend folder so the whole app also runs at http://localhost:5000
+const frontendPath = path.join(__dirname, '..', 'frontend');
+app.use(express.static(frontendPath));
+
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+// Unknown API route
+app.use('/api', (req, res) => {
+    res.status(404).json({ message: 'API route not found' });
 });
 
 // Start server
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
-

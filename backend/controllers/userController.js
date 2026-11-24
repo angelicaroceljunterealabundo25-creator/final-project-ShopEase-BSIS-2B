@@ -1,3 +1,4 @@
+
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -148,9 +149,49 @@ const deleteUser = async (req, res) => {
     }
 };
 
+// Get the logged-in user's own profile
+const getMe = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+// Update the logged-in user's own name, email, or password (role cannot be changed here)
+const updateMe = async (req, res) => {
+    try {
+        const updates = {};
+
+        if (req.body.name) updates.name = req.body.name;
+        if (req.body.email) updates.email = req.body.email.toLowerCase();
+        if (req.body.password) {
+            updates.password = await bcrypt.hash(req.body.password, 10);
+        }
+
+        const user = await User.findByIdAndUpdate(
+            req.user.id,
+            updates,
+            { new: true, runValidators: true }
+        ).select('-password');
+
+        res.status(200).json({ message: 'Profile updated successfully', user });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
 module.exports = {
     registerUser,
     loginUser,
+    getMe,
+    updateMe,
     getUsers,
     getUserById,
     updateUser,

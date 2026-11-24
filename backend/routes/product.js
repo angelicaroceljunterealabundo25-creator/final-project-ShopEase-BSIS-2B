@@ -1,4 +1,5 @@
-﻿const express = require('express');
+﻿
+const express = require('express');
 const router = express.Router();
 
 const {
@@ -8,12 +9,15 @@ const {
     updateProduct,
     deleteProduct
 } = require('../controllers/productController');
+const { protect, authorize } = require('../middleware/auth');
 
-// Product API routes
-router.post('/', createProduct);
+// Anyone can browse products
 router.get('/', getProducts);
 router.get('/:id', getProductById);
-router.put('/:id', updateProduct);
-router.delete('/:id', deleteProduct);
+
+// Only admin/staff can change them (staff updates stock)
+router.post('/', protect, authorize('admin'), createProduct);
+router.put('/:id', protect, authorize('admin', 'staff'), updateProduct);
+router.delete('/:id', protect, authorize('admin'), deleteProduct);
 
 module.exports = router;

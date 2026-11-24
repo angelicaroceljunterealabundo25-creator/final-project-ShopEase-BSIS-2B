@@ -8,21 +8,15 @@ const {
     updateUser,
     deleteUser
 } = require('../controllers/userController');
+const { protect, authorize } = require('../middleware/auth');
 
-// Create user
+// Create user (public - used by the register form)
 router.post('/', registerUser);
 
-// Get all users
-router.get('/', getUsers);
-
-// Get one user
-router.get('/:id', getUserById);
-
-// Update user
-router.put('/:id', updateUser);
-
-// Delete user
-router.delete('/:id', deleteUser);
+// Everything below is for admins only
+router.get('/', protect, authorize('admin'), getUsers);
+router.get('/:id', protect, authorize('admin'), getUserById);
+router.put('/:id', protect, authorize('admin'), updateUser);
+router.delete('/:id', protect, authorize('admin'), deleteUser);
 
 module.exports = router;
-
