@@ -52,6 +52,13 @@ Plain HTML + CSS + JavaScript with Bootstrap 5 (CDN). No build step.
 - Weather API integration
 - IndexedDB offline product copy
 
+## How the Phases Map Here
+
+- **Phase 3** – All HTML and Bootstrap pages, including navigation bars, cards, forms, and modals.
+- **Phase 4** – Forms and actions that send data to the API, including registration, login, checkout, and adding products.
+- **Phase 5** – Pages that fetch and display data from the API, including products, dashboard, admin pages, and orders.
+- **Phase 6** – Edit and delete functions using modals, mainly for admin products and admin users.
+
 ## Running Locally
 
 1. Start the backend server.
