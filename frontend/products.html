@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +18,6 @@
     <div class="container">
 
         <a class="navbar-brand fw-bold" href="index.html">
-            <a class="nav-link" href="login.html">
             ShopEase
         </a>
 
@@ -68,211 +68,16 @@
 
 <!-- PRODUCTS -->
 <main class="container py-5">
-
-    <div class="text-center mb-5">
-
-        <h2 class="fw-bold">
-            Our Products
-        </h2>
-
-        <p class="text-muted">
-            Shop our selection of stationery and study essentials.
-        </p>
-
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Our Products</h2>
+        <p class="text-muted">Shop our selection of stationery and study essentials.</p>
     </div>
-
-
-    <div class="row g-4">
-
-        <!-- NOTEBOOK -->
-        <div class="col-md-6 col-lg-4">
-
-            <div class="card h-100 shadow-sm">
-
-                <div class="card-body text-center d-flex flex-column">
-
-                    <div class="product-icon mb-3">
-                        <span style="font-size: 60px;">📓</span>
-                    </div>
-
-                    <h5 class="fw-bold">
-                        Notebook
-                    </h5>
-
-                    <p class="product-price fw-bold">
-                        ₱50
-                    </p>
-
-                    <a href="product-details.html"
-                       class="btn btn-outline-primary mt-auto">
-                        View Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PENCIL SET -->
-        <div class="col-md-6 col-lg-4">
-
-            <div class="card h-100 shadow-sm">
-
-                <div class="card-body text-center d-flex flex-column">
-
-                    <div class="product-icon mb-3">
-                        <span style="font-size: 60px;">✏️</span>
-                    </div>
-
-                    <h5 class="fw-bold">
-                        Pencil Set
-                    </h5>
-
-                    <p class="product-price fw-bold">
-                        ₱35
-                    </p>
-
-                    <a href="product-details.html"
-                       class="btn btn-outline-primary mt-auto">
-                        View Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- SCHOOL BAG -->
-        <div class="col-md-6 col-lg-4">
-
-            <div class="card h-100 shadow-sm">
-
-                <div class="card-body text-center d-flex flex-column">
-
-                    <div class="product-icon mb-3">
-                        <span style="font-size: 60px;">🎒</span>
-                    </div>
-
-                    <h5 class="fw-bold">
-                        School Bag
-                    </h5>
-
-                    <p class="product-price fw-bold">
-                        ₱350
-                    </p>
-
-                    <a href="product-details.html"
-                       class="btn btn-outline-primary mt-auto">
-                        View Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- GEOMETRY SET -->
-        <div class="col-md-6 col-lg-4">
-
-            <div class="card h-100 shadow-sm">
-
-                <div class="card-body text-center d-flex flex-column">
-
-                    <div class="product-icon mb-3">
-                        <span style="font-size: 60px;">📐</span>
-                    </div>
-
-                    <h5 class="fw-bold">
-                        Geometry Set
-                    </h5>
-
-                    <p class="product-price fw-bold">
-                        ₱85
-                    </p>
-
-                    <a href="product-details.html"
-                       class="btn btn-outline-primary mt-auto">
-                        View Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- COLORING SET -->
-        <div class="col-md-6 col-lg-4">
-
-            <div class="card h-100 shadow-sm">
-
-                <div class="card-body text-center d-flex flex-column">
-
-                    <div class="product-icon mb-3">
-                        <span style="font-size: 60px;">🎨</span>
-                    </div>
-
-                    <h5 class="fw-bold">
-                        Coloring Set
-                    </h5>
-
-                    <p class="product-price fw-bold">
-                        ₱65
-                    </p>
-
-                    <a href="product-details.html"
-                       class="btn btn-outline-primary mt-auto">
-                        View Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- FOLDER -->
-        <div class="col-md-6 col-lg-4">
-
-            <div class="card h-100 shadow-sm">
-
-                <div class="card-body text-center d-flex flex-column">
-
-                    <div class="product-icon mb-3">
-                        <span style="font-size: 60px;">📁</span>
-                    </div>
-
-                    <h5 class="fw-bold">
-                        Folder
-                    </h5>
-
-                    <p class="product-price fw-bold">
-                        ₱25
-                    </p>
-
-                    <a href="product-details.html"
-                       class="btn btn-outline-primary mt-auto">
-                        View Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="row g-2 mb-4">
+        <div class="col-md-8"><input type="text" id="search" class="form-control" placeholder="Search products..."></div>
+        <div class="col-md-4"><select id="categoryFilter" class="form-select"><option value="">All categories</option></select></div>
     </div>
-
+    <div class="row g-4" id="productGrid"><p class="text-center text-muted">Loading products...</p></div>
 </main>
-
 
 <!-- FOOTER -->
 <footer class="bg-dark text-white text-center py-3">
@@ -289,6 +94,8 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/products.js"></script>
 
 </body>
 </html>

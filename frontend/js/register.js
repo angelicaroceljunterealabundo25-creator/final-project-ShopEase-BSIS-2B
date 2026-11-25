@@ -1,23 +1,26 @@
-document.getElementById('registerForm').addEventListener('submit', async function(e) {
+
+100%
+// Register form -> POST /api/users
+document.getElementById('registerForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value;
+  const confirm = document.getElementById('confirmPassword');
 
-  const response = await fetch('http://localhost:5000/api/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ name, email, password })
-  });
+  if (confirm && confirm.value !== password) {
+    return showAlert('Passwords do not match.');
+  }
+  if (password.length < 6) {
+    return showAlert('Password must be at least 6 characters.');
+  }
 
-  const data = await response.json();
-
-  if (response.ok) {
+  try {
+    await api('/users', { method: 'POST', body: { name, email, password } });
     alert('User registered successfully!');
-  } else {
-    alert(`Error: ${data.message || 'Registration failed'}`);
+    location.href = 'login.html';
+  } catch (err) {
+    showAlert(`Error: ${err.message}`);
   }
 });
