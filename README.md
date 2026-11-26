@@ -6,6 +6,8 @@
 
 ShopEase is an online stationery and study essentials store. It gives students and educators one place to find school supplies, check delivery coverage, and follow their orders. Staff use the same system to manage fulfillment and inventory. Administrators oversee the product catalog, accounts, vouchers, and reports.
 
+![ShopEase storefront and product catalog](docs/shopease-storefront.jpg)
+
 ## System features
 
 | Role | Available functions |
@@ -46,7 +48,15 @@ For the first deploy, use a separate Atlas database with a dedicated database us
 
 ## Phase submissions
 
-- [Original course materials and updated phase evidence](docs/README.md)
+- [Phase 1 · Project Design and Alignment](docs/phases/Phase-1-Design-Alignment.pdf)
+- [Phase 2 · Backend Development and API Integration](docs/phases/Phase-2-Backend-and-API.pdf)
+- [Phase 3 · Frontend Development](docs/phases/Phase-3-Frontend.pdf)
+- [Phase 4 · Form Submission and Data Insertion](docs/phases/Phase-4-Form-Submission.pdf)
+- [Phase 5 · Displaying and Managing Data](docs/phases/Phase-5-Data-Display.pdf)
+- [Phase 6 · Update and Delete Functionalities](docs/phases/Phase-6-Update-and-Delete.pdf)
+- [Phase 7 · Testing, Documentation and Final Deployment](docs/phases/Phase-7-Final-Documentation.pdf)
+
+- [Original course materials and annotated screenshots](docs/README.md)
 - [Test coverage and final release checks](docs/local-verification.md)
 - [Catalog photo sources](frontend/img/ATTRIBUTION.md)
 
