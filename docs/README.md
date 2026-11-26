@@ -8,6 +8,6 @@
 | 4 | [Form submission and insertion](phases/Phase-4-Form-Submission.pdf) |
 | 5 | [Data retrieval and display](phases/Phase-5-Data-Display.pdf) |
 | 6 | [Editing and deletion](phases/Phase-6-Update-and-Delete.pdf) |
-| 7 | [Local acceptance and final submission draft](phases/Phase-7-Final-Documentation.pdf) |
+| 7 | [Testing, deployment and final documentation](phases/Phase-7-Final-Documentation.pdf) |
 
-The current reports use the redesigned ShopEase application and verified local evidence. The original reports preserve the earlier project milestones. Members should add their own reflections in the course submission. Phase 7 still needs the Render URL, live verification, and the final submission revision.
+The original reports preserve the earlier project milestones. The current reports include role-specific reflection drafts for members to review. Phase 7 includes the live Render URL and hosted acceptance results.

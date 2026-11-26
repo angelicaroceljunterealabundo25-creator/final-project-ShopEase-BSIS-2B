@@ -47,6 +47,8 @@ Order item snapshots are stored inside `orders.items` as JSON. Delivery coverage
 | 4 | Customer and product creation, checkout, reviews, error states, backend test results | Atlas insertion evidence, phase commit history, and reflections |
 | 5 | Catalog and staff/admin displays, observed JSON, filters, empty states, rendering code, and phase report | Reflections and publication of the `phase-5` tag |
 | 6 | Product editor and deletion confirmation, observed MongoDB before/after values, saved profile and stock changes, cancellation tests | Atlas console before/after evidence if required and team reflections |
-| 7 | Local integration tests and desktop/mobile browser checks | Live Render checks and URLs, final team reflections and PDF, `v1.0-final`, and `phase-7-final` |
+| 7 | Local integration tests, desktop/mobile browser checks, hosted health and checkout results, and reflection drafts | Hosted team sign-in and password-reset delivery, member review of reflections, and final release tags |
+
+The [live Render service](https://shopease-bsis2b.onrender.com/) passed its Atlas health check. The hosted smoke test also confirmed all 18 product images, customer registration and sign-in, role restrictions, voucher totals, order placement, cancellation, and stock restoration.
 
 MongoDB generates `_id` values and retains the application's public UUIDs. Checkout and cancellation use MongoDB transactions. Unique indexes enforce one order per customer/request pair and one review per customer, order, and product.

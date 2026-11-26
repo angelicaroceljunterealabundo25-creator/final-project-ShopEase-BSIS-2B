@@ -42,7 +42,9 @@ The integration suite runs against a separate MongoDB replica set. See the [back
 
 ## Deployment
 
-The Render deployment and live URL are pending. Configure a Node web service from the repository root with build command `npm ci --omit=dev --prefix backend` and start command `npm start`. Use health check path `/api/health`. Set `HOST=0.0.0.0`, `NODE_ENV=production`, `MONGO_URI`, `MONGO_DB_NAME`, and a private `JWT_SECRET` of at least 32 characters. The app uses Render's public URL unless `APP_ORIGIN` is set.
+[Open the live ShopEase site](https://shopease-bsis2b.onrender.com/). The hosted acceptance check verified Atlas connectivity, all 18 products and photos, and a customer order with voucher application, cancellation, and stock restoration.
+
+The Render service builds from the repository root with `npm ci --omit=dev --prefix backend` and starts with `npm start`. The health check path is `/api/health`. The service requires `HOST=0.0.0.0`, `NODE_ENV=production`, `MONGO_URI`, `MONGO_DB_NAME`, and a private `JWT_SECRET` of at least 32 characters. The app uses Render's public URL unless `APP_ORIGIN` is set.
 
 For the first deploy, use a separate Atlas database with a dedicated database user, and set `SEED_CATALOG=true` to load products and vouchers. Set `BOOTSTRAP_ADMIN_EMAIL` and `BOOTSTRAP_ADMIN_PASSWORD` as private Render variables to create the first administrator. Use a password of at least 16 characters and remove both bootstrap variables after the administrator signs in. Configure SMTP if password recovery email is part of the hosted evaluation.
 
