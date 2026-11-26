@@ -40,7 +40,9 @@ The integration suite runs against a separate MongoDB replica set. See the [back
 
 ## Deployment
 
-The Render deployment and live URL are pending. Configure a Node web service from the repository root with build command `npm ci --omit=dev --prefix backend` and start command `npm start`. Use health check path `/api/health`. Set `HOST=0.0.0.0`, `NODE_ENV=production`, `APP_ORIGIN`, `MONGO_URI`, `MONGO_DB_NAME`, and a private `JWT_SECRET` of at least 32 characters. Configure SMTP for password recovery and provision the production catalog, vouchers, and initial administrator before the live acceptance test. Use a separate hosted database with production credentials.
+The Render deployment and live URL are pending. Configure a Node web service from the repository root with build command `npm ci --omit=dev --prefix backend` and start command `npm start`. Use health check path `/api/health`. Set `HOST=0.0.0.0`, `NODE_ENV=production`, `MONGO_URI`, `MONGO_DB_NAME`, and a private `JWT_SECRET` of at least 32 characters. The app uses Render's public URL unless `APP_ORIGIN` is set.
+
+For the first deploy, use a separate Atlas database with a dedicated database user, and set `SEED_CATALOG=true` to load products and vouchers. Set `BOOTSTRAP_ADMIN_EMAIL` and `BOOTSTRAP_ADMIN_PASSWORD` as private Render variables to create the first administrator. Use a password of at least 16 characters and remove both bootstrap variables after the administrator signs in. Configure SMTP if password recovery email is part of the hosted evaluation.
 
 ## Phase submissions
 

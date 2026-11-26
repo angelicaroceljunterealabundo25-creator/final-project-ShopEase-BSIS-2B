@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import { randomUUID } from 'node:crypto';
 import importedCatalog from './catalog-seed.json' with { type: 'json' };
+import { readEmail, readPassword } from './http.js';
 import { productReviews, reviewAuthors } from './review-fixtures.js';
 
 const legacySlugs = Object.keys(productReviews);
@@ -20,11 +21,30 @@ export async function seedAccounts(db) {
       id: randomUUID(), name: `ShopEase ${role}`, password_hash: passwordHash, role, phone: '09170000000', address: 'Demo delivery address, Polangui, Albay',
     } }, { upsert: true, timestamps: { createdAt: true, updatedAt: false } });
   }
+  await seedVouchers(db);
+}
+
+export async function seedVouchers(db) {
   const expires = new Date(Date.now() + 180 * 86_400_000);
   const vouchers = [['HELLO5', 5, 0], ['STUDY10', 10, 20000], ['SCHOOL15', 15, 50000]];
   await db.Voucher.bulkWrite(vouchers.map(([code, percent, minimum]) => ({
     updateOne: { filter: { code }, update: { $setOnInsert: { percent, minimum_cents: minimum, expires_at: expires, active: true } }, upsert: true },
   })));
+}
+
+export async function bootstrapAdmin(db, { email, password }) {
+  if (!email && !password) return;
+  const address = readEmail(email);
+  const initialPassword = readPassword(password);
+  if (address.endsWith('@shopease.test') || initialPassword.length < 16) {
+    throw new Error('Use a real admin email and a private password of at least 16 characters.');
+  }
+  if (await db.User.exists({ role: 'admin', active: true })) return;
+  const password_hash = await bcrypt.hash(initialPassword, 12);
+  const account = await db.User.findOneAndUpdate({ email: address }, { $setOnInsert: {
+    id: randomUUID(), name: 'ShopEase administrator', password_hash, role: 'admin',
+  } }, { upsert: true, returnDocument: 'after', timestamps: { createdAt: true, updatedAt: false } }).select('role active').lean();
+  if (account.role !== 'admin' || !account.active) throw new Error('Choose an unused email for the initial administrator.');
 }
 
 export function reviewFixtureIds(index) {

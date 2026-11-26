@@ -5,7 +5,7 @@ import { test } from 'node:test';
 import XLSX from 'xlsx';
 import { openDatabase } from '../db.js';
 import { createApp } from '../server.js';
-import { seedAccounts, seedCatalog } from '../seed.js';
+import { bootstrapAdmin, seedAccounts, seedCatalog, seedVouchers } from '../seed.js';
 
 test('ShopEase API persists the catalog, accounts, orders, inventory, reviews and administration in MongoDB', async (t) => {
   const db = await openDatabase({ memory: true });
@@ -13,6 +13,13 @@ test('ShopEase API persists the catalog, accounts, orders, inventory, reviews an
   const legacy = await db.Product.create({ id: randomUUID(), slug: 'everyday-notebook', name: 'Everyday Notebook', category: 'Notebooks',
     description: 'Former catalog item', stock: 4, price_cents: 12900, image: '/img/notebook.jpg' });
   await seedCatalog(db);
+  await seedVouchers(db);
+  const initialAdmin = { email: 'owner@example.test', password: 'LocalOnlyPassword2026!' };
+  await bootstrapAdmin(db, initialAdmin);
+  await bootstrapAdmin(db, initialAdmin);
+  assert.equal(await db.User.countDocuments(), 1);
+  assert.equal((await db.User.findOne({ email: initialAdmin.email }).lean()).role, 'admin');
+  assert.equal(await db.Voucher.countDocuments(), 3);
   await seedAccounts(db);
   const outbox = [];
   const server = createApp(db, { sendReset: async (email, url) => outbox.push({ email, url }) }).listen(0, '127.0.0.1');

@@ -4,12 +4,12 @@ import { dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { accounts } from './accounts.js';
 import { catalog } from './catalog.js';
-import { googleMapsDemoKey, host, port, production, seedDemo } from './config.js';
+import { googleMapsDemoKey, host, port, production, seedDemo, seedStorefront } from './config.js';
 import { openDatabase } from './db.js';
 import { HttpError, sameOrigin } from './http.js';
 import { orders } from './orders.js';
 import { reports } from './reports.js';
-import { seedAccounts, seedCatalog } from './seed.js';
+import { bootstrapAdmin, seedAccounts, seedCatalog, seedVouchers } from './seed.js';
 
 const framePolicy = 'frame-src https://www.google.com https://www.openstreetmap.org';
 const commonPolicy = `default-src 'self'; ${framePolicy}; base-uri 'none'; form-action 'self'; frame-ancestors 'none'`;
@@ -60,10 +60,12 @@ export function createApp(db, services) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const db = await openDatabase();
-  if (seedDemo) {
-    await seedCatalog(db);
-    await seedAccounts(db);
-  }
+  if (seedStorefront) await seedCatalog(db);
+  if (seedDemo) await seedAccounts(db);
+  else if (seedStorefront) await seedVouchers(db);
+  if (production) await bootstrapAdmin(db, {
+    email: process.env.BOOTSTRAP_ADMIN_EMAIL, password: process.env.BOOTSTRAP_ADMIN_PASSWORD,
+  });
   const server = createApp(db).listen(port, host, () => console.log(`ShopEase is running at http://${host}:${port}`));
   for (const signal of ['SIGINT', 'SIGTERM']) {
     process.once(signal, () => {
