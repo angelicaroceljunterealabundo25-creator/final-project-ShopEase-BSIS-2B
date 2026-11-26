@@ -1,2 +1,10 @@
-.env
 node_modules/
+dist/
+.env
+!.env.example
+*.local
+.DS_Store
+Thumbs.db
+server/node_modules/
+server/dist/
+backend/.data/

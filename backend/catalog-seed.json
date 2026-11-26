@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "sm-pilot-ballpoint-bps-fine-0-7mm",
+    "name": "Pilot BP-S Ball Pen Fine 0.7mm",
+    "brand": "Pilot",
+    "category": "Ballpoint & Gel Pens",
+    "price_cents": 2800,
+    "stock": 24,
+    "description": "A fine 0.7 mm ballpoint pen for everyday notes. The selected color is black.",
+    "image": "/img/sm-pilot-ballpoint-bps-fine-0-7mm.webp",
+    "source_url": "https://smstationery.com.ph/products/pilot-ballpoint-bps-fine-0-7mm"
+  },
+  {
+    "slug": "sm-faber-castell-textliner-38-pastel-set",
+    "name": "Faber Castell Textliner #38 - Pack of 6",
+    "brand": "Faber Castell",
+    "category": "Highlighters",
+    "price_cents": 20975,
+    "stock": 25,
+    "description": "Six pastel Textliner #38 highlighters for marking notes and readings.",
+    "image": "/img/sm-faber-castell-textliner-38-pastel-set.webp",
+    "source_url": "https://smstationery.com.ph/products/faber-castell-textliner-38-pastel-set"
+  },
+  {
+    "slug": "sm-faber-castell-textliner-46-set",
+    "name": "Faber Castell Textliner 46 Set",
+    "brand": "Faber Castell",
+    "category": "Highlighters",
+    "price_cents": 20975,
+    "stock": 26,
+    "description": "A set of six bright Textliner 46 highlighters for organizing notes by color.",
+    "image": "/img/sm-faber-castell-textliner-46-set.webp",
+    "source_url": "https://smstationery.com.ph/products/faber-castell-textliner-46-set"
+  },
+  {
+    "slug": "sm-pilot-juice-gel-pen-0-5mm",
+    "name": "Pilot Juice Gel Pen 0.5mm",
+    "brand": "Pilot",
+    "category": "Ballpoint & Gel Pens",
+    "price_cents": 4400,
+    "stock": 27,
+    "description": "A Pilot Juice gel pen with a 0.5 mm tip for fine handwriting.",
+    "image": "/img/sm-pilot-juice-gel-pen-0-5mm.webp",
+    "source_url": "https://smstationery.com.ph/products/pilot-juice-gel-pen-0-5mm"
+  },
+  {
+    "slug": "sm-pilot-bp-1rt-retractable-ballpoint-pen-0-7mm-pack-of-3",
+    "name": "Pilot BP-1RT Retractable Ball Pen 0.7mm Pack of 3",
+    "brand": "Pilot",
+    "category": "Ballpoint & Gel Pens",
+    "price_cents": 4400,
+    "stock": 28,
+    "description": "A pack of three retractable Pilot BP-1RT ballpoint pens with 0.7 mm tips.",
+    "image": "/img/sm-pilot-bp-1rt-retractable-ballpoint-pen-0-7mm-pack-of-3.webp",
+    "source_url": "https://smstationery.com.ph/products/pilot-bp-1rt-retractable-ballpoint-pen-0-7mm-pack-of-3"
+  },
+  {
+    "slug": "sm-stabilo-boss-pastel",
+    "name": "Stabilo Boss Pastel",
+    "brand": "Stabilo",
+    "category": "Highlighters",
+    "price_cents": 4800,
+    "stock": 29,
+    "description": "A broad-bodied Stabilo Boss highlighter with pastel ink.",
+    "image": "/img/sm-stabilo-boss-pastel.webp",
+    "source_url": "https://smstationery.com.ph/products/stabilo-boss-pastel"
+  },
+  {
+    "slug": "sm-green-apple-spiral-notebook-80lvs",
+    "name": "Green Apple Spiral Notebook 80 Leaves",
+    "brand": "Green Apple",
+    "category": "Notebooks & Paper",
+    "price_cents": 4600,
+    "stock": 24,
+    "description": "An 80-leaf spiral notebook for class notes and short exercises.",
+    "image": "/img/sm-green-apple-spiral-notebook-80lvs.webp",
+    "source_url": "https://smstationery.com.ph/products/green-apple-spiral-notebook-80lvs"
+  },
+  {
+    "slug": "sm-elmers-glue-all-multi-purpose-glue-white",
+    "name": "Elmer's Glue All Multi-purpose Glue White - 40g",
+    "brand": "Elmer's",
+    "category": "Glue & Tape",
+    "price_cents": 2975,
+    "stock": 34,
+    "description": "A 40 g bottle of Elmer's white multipurpose glue for paper crafts and school projects.",
+    "image": "/img/sm-elmers-glue-all-multi-purpose-glue-white.webp",
+    "source_url": "https://smstationery.com.ph/products/elmers-glue-all-multi-purpose-glue-white"
+  },
+  {
+    "slug": "sm-mongol-character-wraps-barbie-pack-of-3",
+    "name": "Mongol Character Wraps Barbie Pack of 3",
+    "brand": "Mongol",
+    "category": "Pencils & Tools",
+    "price_cents": 3600,
+    "stock": 29,
+    "description": "A pack of three Mongol pencils with Barbie-themed wraps.",
+    "image": "/img/sm-mongol-character-wraps-barbie-pack-of-3.webp",
+    "source_url": "https://smstationery.com.ph/products/mongol-character-wraps-barbie-pack-of-3"
+  },
+  {
+    "slug": "sm-stabilo-swing-cool-highlighter",
+    "name": "Stabilo Swing Cool Highlighter",
+    "brand": "Stabilo",
+    "category": "Highlighters",
+    "price_cents": 4500,
+    "stock": 30,
+    "description": "A slim Stabilo Swing Cool highlighter that fits in a pencil case.",
+    "image": "/img/sm-stabilo-swing-cool-highlighter.webp",
+    "source_url": "https://smstationery.com.ph/products/stabilo-swing-cool-highlighter"
+  },
+  {
+    "slug": "sm-crocodile-masking-tape-25-yards-3-core",
+    "name": "Crocodile Masking Tape 0.5in.x25yds.",
+    "brand": "Croco",
+    "category": "Glue & Tape",
+    "price_cents": 2300,
+    "stock": 31,
+    "description": "A roll of Crocodile masking tape measuring half an inch by 25 yards.",
+    "image": "/img/sm-crocodile-masking-tape-25-yards-3-core.webp",
+    "source_url": "https://smstationery.com.ph/products/crocodile-masking-tape-25-yards-3-core"
+  },
+  {
+    "slug": "sm-construction-paper-assorted-colors-8x11-8-20-sheets",
+    "name": "Construction Paper Assorted Colors 8 X 11.8\" 20 Sheets",
+    "brand": "Creation",
+    "category": "Notebooks & Paper",
+    "price_cents": 6000,
+    "stock": 32,
+    "description": "Twenty assorted-color sheets of construction paper, measuring 8 by 11.8 inches.",
+    "image": "/img/sm-construction-paper-assorted-colors-8x11-8-20-sheets.webp",
+    "source_url": "https://smstationery.com.ph/products/construction-paper-assorted-colors-8x11-8-20-sheets"
+  },
+  {
+    "slug": "sm-easywrite-intermediate-pad-80lvs",
+    "name": "Advance Easywrite Intermediate Pad",
+    "brand": "Advance",
+    "category": "Notebooks & Paper",
+    "price_cents": 2900,
+    "stock": 40,
+    "description": "An Advance Easywrite intermediate pad for handwriting and classroom work.",
+    "image": "/img/sm-easywrite-intermediate-pad-80lvs.webp",
+    "source_url": "https://smstationery.com.ph/products/easywrite-intermediate-pad-80lvs"
+  },
+  {
+    "slug": "sm-corona-index-card-white-50-sheets-per-pack",
+    "name": "Corona Index Card 50 Sheets per Pack - 3x5\"",
+    "brand": "Corona",
+    "category": "Notebooks & Paper",
+    "price_cents": 2700,
+    "stock": 26,
+    "description": "Fifty white 3-by-5-inch index cards for flash cards and short notes.",
+    "image": "/img/sm-corona-index-card-white-50-sheets-per-pack.webp",
+    "source_url": "https://smstationery.com.ph/products/corona-index-card-white-50-sheets-per-pack"
+  },
+  {
+    "slug": "sm-maped-scissor-13cm",
+    "name": "Maped Scissor 13cm Assorted",
+    "brand": "Maped",
+    "category": "Pencils & Tools",
+    "price_cents": 3700,
+    "stock": 32,
+    "description": "A 13 cm pair of Maped scissors for cutting paper and craft materials.",
+    "image": "/img/sm-maped-scissor-13cm.webp",
+    "source_url": "https://smstationery.com.ph/products/maped-scissor-13cm"
+  },
+  {
+    "slug": "sm-maped-shaker-2-holes-sharpener",
+    "name": "Maped Shaker Sharpener",
+    "brand": "Maped",
+    "category": "Pencils & Tools",
+    "price_cents": 5475,
+    "stock": 39,
+    "description": "A two-hole Maped sharpener with a shavings container for pencil cases.",
+    "image": "/img/sm-maped-shaker-2-holes-sharpener.webp",
+    "source_url": "https://smstationery.com.ph/products/maped-shaker-2-holes-sharpener"
+  },
+  {
+    "slug": "sm-corona-spiral-notebook-100lvs",
+    "name": "Corona 100-Sheet Spiral Notebook 178x254mm",
+    "brand": "Corona",
+    "category": "Notebooks & Paper",
+    "price_cents": 12100,
+    "stock": 40,
+    "description": "A 100-sheet Corona spiral notebook measuring 178 by 254 mm.",
+    "image": "/img/sm-corona-spiral-notebook-100lvs.webp",
+    "source_url": "https://smstationery.com.ph/products/corona-spiral-notebook-100lvs"
+  },
+  {
+    "slug": "sm-acura-aluminum-ruler-12-inches",
+    "name": "Acura Aluminum Ruler 12 Inches",
+    "brand": "Acura",
+    "category": "Pencils & Tools",
+    "price_cents": 3400,
+    "stock": 36,
+    "description": "A 12-inch aluminum ruler for measuring and drawing straight lines.",
+    "image": "/img/sm-acura-aluminum-ruler-12-inches.webp",
+    "source_url": "https://smstationery.com.ph/products/acura-aluminum-ruler-12-inches"
+  }
+]

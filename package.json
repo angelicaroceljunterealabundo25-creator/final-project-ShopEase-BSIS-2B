@@ -1,0 +1,11 @@
+{
+  "name": "shopease",
+  "version": "0.1.0",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev",
+    "test": "npm --prefix backend test"
+  }
+}

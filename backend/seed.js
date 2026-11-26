@@ -1,53 +1,61 @@
+import bcrypt from 'bcryptjs';
+import { randomUUID } from 'node:crypto';
+import importedCatalog from './catalog-seed.json' with { type: 'json' };
+import { productReviews, reviewAuthors } from './review-fixtures.js';
 
-// Creates sample users and products so the app can be tested right away.
-// Run:  npm run seed
-require('dotenv').config();
+const legacySlugs = Object.keys(productReviews);
 
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const User = require('./models/User');
-const Product = require('./models/Product');
+export async function seedCatalog(db) {
+  await db.Product.bulkWrite(importedCatalog.map(({ source_url, ...product }) => ({
+    updateOne: { filter: { slug: product.slug }, update: { $setOnInsert: { ...product, id: randomUUID(), active: true } },
+      upsert: true, timestamps: { createdAt: true, updatedAt: false } },
+  })));
+  await db.Product.updateMany({ slug: { $in: legacySlugs }, active: true }, { $set: { active: false } });
+}
 
-const users = [
-    { name: 'ShopEase Admin', email: 'admin@shopease.com', password: 'admin123', role: 'admin' },
-    { name: 'ShopEase Staff', email: 'staff@shopease.com', password: 'staff123', role: 'staff' },
-    { name: 'Juan Dela Cruz', email: 'juan@example.com', password: 'juan123', role: 'customer' }
-];
+export async function seedAccounts(db) {
+  const passwordHash = await bcrypt.hash('ShopEaseDemo2026!', 12);
+  for (const role of ['customer', 'staff', 'admin']) {
+    await db.User.updateOne({ email: `${role}@shopease.test` }, { $setOnInsert: {
+      id: randomUUID(), name: `ShopEase ${role}`, password_hash: passwordHash, role, phone: '09170000000', address: 'Demo delivery address, Polangui, Albay',
+    } }, { upsert: true, timestamps: { createdAt: true, updatedAt: false } });
+  }
+  const expires = new Date(Date.now() + 180 * 86_400_000);
+  const vouchers = [['HELLO5', 5, 0], ['STUDY10', 10, 20000], ['SCHOOL15', 15, 50000]];
+  await db.Voucher.bulkWrite(vouchers.map(([code, percent, minimum]) => ({
+    updateOne: { filter: { code }, update: { $setOnInsert: { percent, minimum_cents: minimum, expires_at: expires, active: true } }, upsert: true },
+  })));
+}
 
-const products = [
-    { name: 'Notebook', description: 'A simple and useful notebook for students, teachers, and everyday school activities.', price: 50, category: 'School Supplies', stock: 100 },
-    { name: 'Pencil Set', description: 'A set of pencils for writing, drawing, and school work.', price: 35, category: 'School Supplies', stock: 80 },
-    { name: 'School Bag', description: 'A sturdy bag for books, notebooks, and daily school needs.', price: 350, category: 'School Essentials', stock: 5 },
-    { name: 'Geometry Set', description: 'Ruler, protractor, and compass for math class.', price: 85, category: 'Study Supplies', stock: 40 },
-    { name: 'Coloring Set', description: 'Colored pencils and crayons for projects and art class.', price: 65, category: 'Study Supplies', stock: 60 },
-    { name: 'Folder', description: 'A plastic folder to keep papers organized.', price: 25, category: 'School Supplies', stock: 120 }
-];
+export function reviewFixtureIds(index) {
+  const sequence = String(index + 1).padStart(3, '0');
+  return { userId: `50000000-0000-4000-8000-000000001${sequence}`, orderId: `50000000-0000-4000-8000-000000002${sequence}` };
+}
 
-(async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_URI);
-
-        for (const u of users) {
-            const exists = await User.findOne({ email: u.email });
-            if (!exists) {
-                await User.create({ ...u, password: await bcrypt.hash(u.password, 10) });
-                console.log('Created user', u.email);
-            }
-        }
-
-        for (const p of products) {
-            const exists = await Product.findOne({ name: p.name });
-            if (!exists) {
-                await Product.create(p);
-                console.log('Created product', p.name);
-            }
-        }
-
-        console.log('Seed finished');
-    } catch (err) {
-        console.error(err.message);
-        process.exitCode = 1;
-    } finally {
-        await mongoose.disconnect();
-    }
-})();
+export async function seedReviews(db) {
+  const rows = await db.Product.find({ slug: { $in: Object.keys(productReviews) } }).sort({ slug: 1 }).lean();
+  if (!rows.length) return;
+  const items = rows.map(product => ({ product_id: product.id, name: product.name, price_cents: product.price_cents, quantity: 1 }));
+  const total = items.reduce((sum, item) => sum + item.price_cents, 0);
+  const existingEmails = ['sample-mia@shopease.test', 'sample-rafael@shopease.test'];
+  const reviewers = reviewAuthors.map((name, index) => ({
+    ...reviewFixtureIds(index), name, index, email: existingEmails[index] ?? `reviewer-${index + 1}@shopease.test`,
+  }));
+  await db.transaction(async session => {
+    await db.User.bulkWrite(reviewers.map(({ userId, name, email }) => ({
+      updateOne: { filter: { id: userId, email, active: false }, update: { $set: { name, review_fixture: true },
+        $setOnInsert: { role: 'customer', password_hash: '', session_version: 0 } }, upsert: true },
+    })), { session });
+    await db.Order.bulkWrite(reviewers.map(({ userId, orderId }) => ({
+      updateOne: { filter: { id: orderId, user_id: userId }, update: { $set: { items, subtotal_cents: total, total_cents: total, review_fixture: true },
+        $setOnInsert: { request_id: orderId, delivery_cents: 0, discount_cents: 0, status: 'delivered', payment_method: 'cash_on_delivery',
+          payment_status: 'received', shipping_address: 'Polangui, Albay', phone: '+639170000000', created_at: new Date(Date.now() - 14 * 86_400_000) } }, upsert: true, timestamps: false },
+    })), { session });
+    await db.Review.bulkWrite(reviewers.flatMap(({ userId, orderId, index }) => rows.map((product, position) => {
+      const rating = index === 10 ? 3 : (index + position) % 3 === 0 ? 4 : 5;
+      const writtenAt = new Date(Date.now() - (12 - index) * 86_400_000);
+      return { updateOne: { filter: { user_id: userId, order_id: orderId, product_id: product.id }, update: { $set: { review_fixture: true },
+        $setOnInsert: { id: randomUUID(), rating, comment: productReviews[product.slug][index], created_at: writtenAt, updated_at: writtenAt } }, upsert: true, timestamps: false } };
+    })), { session });
+  });
+}
