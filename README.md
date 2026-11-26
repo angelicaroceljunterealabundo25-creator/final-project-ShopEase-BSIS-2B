@@ -4,6 +4,8 @@
 
 **First semester, academic year 2026–2027**
 
+**[Live ShopEase website on Render](https://shopease-bsis2b.onrender.com/)** · [Phase 1–7 reports](#phase-submissions)
+
 ShopEase is an online stationery and study essentials store. It gives students and educators one place to find school supplies, check delivery coverage, and follow their orders. Staff use the same system to manage fulfillment and inventory. Administrators oversee the product catalog, accounts, vouchers, and reports.
 
 ![ShopEase storefront and product catalog](docs/shopease-storefront.jpg)
@@ -42,7 +44,7 @@ The integration suite runs against a separate MongoDB replica set. See the [back
 
 ## Deployment
 
-[Open the live ShopEase site](https://shopease-bsis2b.onrender.com/). The hosted acceptance check verified Atlas connectivity, all 18 products and photos, and a customer order with voucher application, cancellation, and stock restoration.
+Render deploys the `main` branch. The [live API health check](https://shopease-bsis2b.onrender.com/api/health) confirms the connection to MongoDB Atlas. Hosted testing also verified all 18 products and photos, voucher application, order placement, cancellation, and stock restoration.
 
 The Render service builds from the repository root with `npm ci --omit=dev --prefix backend` and starts with `npm start`. The health check path is `/api/health`. The service requires `HOST=0.0.0.0`, `NODE_ENV=production`, `MONGO_URI`, `MONGO_DB_NAME`, and a private `JWT_SECRET` of at least 32 characters. The app uses Render's public URL unless `APP_ORIGIN` is set.
 
